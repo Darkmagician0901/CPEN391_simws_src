@@ -1,0 +1,63 @@
+# Global parameter file for the milestone1 package.
+#
+# Loaded by launch/milestone1_py.py and passed to every node, so all tuning
+# happens here. After editing, rebuild (colcon build) or use
+# `colcon build --symlink-install` so the installed copy follows this file.
+#
+# Individual values can also be changed at runtime, e.g.
+#     ros2 param set /pid kp 1.2
+#
+# NOTE: always write floats with a decimal point (1.0, not 1). A float
+# parameter set to an integer is rejected by rclpy.
+
+# ---------------------------------------------------------------------------
+# Shared by all nodes: topic names
+# ---------------------------------------------------------------------------
+# Data flow:
+#   /scan --> dist_finder --> /wall_error --> pid --> /drive_request
+#   /drive_request + /scan + /ego_racecar/odom --> safety_node --> /drive
+#
+# Only safety_node publishes on /drive, so a brake can never be overruled.
+/**:
+  ros__parameters:
+    scan_topic: /scan
+    odom_topic: /ego_racecar/odom
+    error_topic: /wall_error
+    drive_request_topic: /drive_request
+    drive_topic: /drive
+
+# ---------------------------------------------------------------------------
+# dist_finder: LiDAR -> wall distance error
+# ---------------------------------------------------------------------------
+dist_finder:
+  ros__parameters:
+    wall_side: left            # which wall to follow: 'left' or 'right'
+    desired_distance: 1.0      # m, target distance to the wall
+    lookahead_distance: 1.0    # m, L: project the distance this far ahead
+    theta: 25.0                # deg, angle between beam b (90 deg) and beam a
+
+# ---------------------------------------------------------------------------
+# pid: wall distance error -> steering and speed
+# ---------------------------------------------------------------------------
+pid:
+  ros__parameters:
+    kp: 1.0
+    ki: 0.0
+    kd: 0.0
+    max_steering_angle: 0.4189 # rad (24 deg), steering output is clipped to this
+    integral_limit: 1.0        # anti-windup clamp on the integral term
+
+    # Speed schedule based on |steering angle| (from the lecture slides)
+    small_angle: 10.0          # deg
+    large_angle: 20.0          # deg
+    fast_speed: 1.5            # m/s when |steering| < small_angle
+    slow_speed: 0.5            # m/s otherwise
+
+# ---------------------------------------------------------------------------
+# safety_node: TTC-based AEB, final gate on /drive
+# ---------------------------------------------------------------------------
+safety_node:
+  ros__parameters:
+    ttc_threshold: 0.5         # s, brake when min iTTC is below this
+    car_width: 0.34            # m, width of the path used to filter beams
+    min_closing_speed: 1.0e-6  # m/s, beams closing slower than this are ignored

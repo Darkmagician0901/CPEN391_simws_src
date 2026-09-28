@@ -1,1 +1,13 @@
+# Simulator (installed separately, not part of our submission)
 src/f1tenth_gym_ros/
+src/f1tenthgym/
+
+# colcon build output
+build/
+install/
+log/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
