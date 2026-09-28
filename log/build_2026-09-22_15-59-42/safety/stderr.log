@@ -1,0 +1,5 @@
+  File "/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety/safety_node.py", line 103
+    drive_msg.drive.spee~d = 0.0
+                        ^
+SyntaxError: invalid syntax
+

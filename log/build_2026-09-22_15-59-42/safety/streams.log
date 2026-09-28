@@ -1,0 +1,41 @@
+[0.734s] Invoking command in '/home/darkmagician0901/sim_ws/build/safety': PYTHONPATH=/home/darkmagician0901/sim_ws/build/safety/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/darkmagician0901/sim_ws/build/safety/build
+[0.941s] running develop
+[1.083s] Removing /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety.egg-link (link to .)
+[1.106s] Invoked command in '/home/darkmagician0901/sim_ws/build/safety' returned '0': PYTHONPATH=/home/darkmagician0901/sim_ws/build/safety/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/darkmagician0901/sim_ws/build/safety/build
+[1.108s] Invoking command in '/home/darkmagician0901/sim_ws/src/safety': PYTHONPATH=/home/darkmagician0901/sim_ws/build/safety/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety build --build-base /home/darkmagician0901/sim_ws/build/safety/build install --record /home/darkmagician0901/sim_ws/build/safety/install.log --install-scripts $base/lib/safety --single-version-externally-managed install_data --force
+[1.317s] running egg_info
+[1.317s] writing ../../build/safety/safety.egg-info/PKG-INFO
+[1.318s] writing dependency_links to ../../build/safety/safety.egg-info/dependency_links.txt
+[1.318s] writing entry points to ../../build/safety/safety.egg-info/entry_points.txt
+[1.318s] writing requirements to ../../build/safety/safety.egg-info/requires.txt
+[1.318s] writing top-level names to ../../build/safety/safety.egg-info/top_level.txt
+[1.320s] reading manifest file '../../build/safety/safety.egg-info/SOURCES.txt'
+[1.320s] writing manifest file '../../build/safety/safety.egg-info/SOURCES.txt'
+[1.320s] running build
+[1.321s] running build_py
+[1.321s] creating /home/darkmagician0901/sim_ws/build/safety/build
+[1.321s] creating /home/darkmagician0901/sim_ws/build/safety/build/lib
+[1.321s] creating /home/darkmagician0901/sim_ws/build/safety/build/lib/safety
+[1.321s] copying safety/__init__.py -> /home/darkmagician0901/sim_ws/build/safety/build/lib/safety
+[1.321s] copying safety/safety_node.py -> /home/darkmagician0901/sim_ws/build/safety/build/lib/safety
+[1.321s] running install
+[1.322s] running install_lib
+[1.323s] creating /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety
+[1.323s] copying /home/darkmagician0901/sim_ws/build/safety/build/lib/safety/__init__.py -> /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety
+[1.323s] copying /home/darkmagician0901/sim_ws/build/safety/build/lib/safety/safety_node.py -> /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety
+[1.323s] byte-compiling /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety/__init__.py to __init__.cpython-310.pyc
+[1.323s] byte-compiling /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety/safety_node.py to safety_node.cpython-310.pyc
+[1.324s]   File "/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety/safety_node.py", line 103
+[1.324s]     drive_msg.drive.spee~d = 0.0
+[1.324s]                         ^
+[1.324s] SyntaxError: invalid syntax
+[1.324s] 
+[1.324s] running install_data
+[1.324s] copying resource/safety -> /home/darkmagician0901/sim_ws/install/safety/share/ament_index/resource_index/packages
+[1.324s] copying package.xml -> /home/darkmagician0901/sim_ws/install/safety/share/safety
+[1.324s] running install_egg_info
+[1.326s] Copying ../../build/safety/safety.egg-info to /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety-0.0.0-py3.10.egg-info
+[1.326s] running install_scripts
+[1.344s] Installing safety_node script to /home/darkmagician0901/sim_ws/install/safety/lib/safety
+[1.345s] writing list of installed files to '/home/darkmagician0901/sim_ws/build/safety/install.log'
+[1.362s] Invoked command in '/home/darkmagician0901/sim_ws/src/safety' returned '0': PYTHONPATH=/home/darkmagician0901/sim_ws/build/safety/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety build --build-base /home/darkmagician0901/sim_ws/build/safety/build install --record /home/darkmagician0901/sim_ws/build/safety/install.log --install-scripts $base/lib/safety --single-version-externally-managed install_data --force

@@ -1,0 +1,321 @@
+[0.133s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.133s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=2, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x70aff008f280>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x70aff008eda0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x70aff008eda0>>, mixin_verb=('build',))
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.342s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.342s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/darkmagician0901/sim_ws'
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.342s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.358s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ignore_ament_install'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['colcon_pkg']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'colcon_pkg'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['colcon_meta']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'colcon_meta'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['ros']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ros'
+[0.363s] DEBUG:colcon.colcon_core.package_identification:Package 'src/f1tenth_gym_ros' with type 'ros.ament_python' and name 'f1tenth_gym_ros'
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.363s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.382s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.382s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.384s] WARNING:colcon.colcon_core.prefix_path.colcon:The path '/home/darkmagician0901/ros2_humble/install' in the environment variable COLCON_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/test_msgs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/action_msgs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/unique_identifier_msgs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_lint_common' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_uncrustify' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.384s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_uncrustify' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/uncrustify_vendor' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_cyclonedds_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/tracetools' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/test_interface_files' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_spdlog' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/spdlog_vendor' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextddsmicro' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextdds' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextdds_common' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rti_connext_dds_cmake_module' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosgraph_msgs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_dds_common' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcl_interfaces' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/builtin_interfaces' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_default_runtime' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_default_generators' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_py' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rpyutils' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_introspection_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_rs' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_c' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_introspection_c' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_fastrtps_c' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_fastrtps_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_runtime_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcl_yaml_param_parser' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_runtime_c' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_c' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_interface' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_parser' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_adapter' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rosidl_cli' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ros_environment' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rmw_implementation_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcpputils' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_noop' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_interface' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/rcutils' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/launch_testing_ament_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/python_cmake_module' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/performance_test_fixture' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/launch_testing' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/launch_yaml' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/launch_xml' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/launch' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/osrf_pycommon' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.385s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/mimick_vendor' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/libyaml_vendor' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_ros' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gmock' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gtest' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_google_benchmark' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/fastrtps_cmake_module' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/domain_coordinator' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_xmllint' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_xmllint' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_pycodestyle' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_pep257' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_pep257' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_lint_auto' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_version' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_pytest' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_lint_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_flake8' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_cpplint' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_cppcheck' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_copyright' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_test' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_target_dependencies' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_python' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_dependencies' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_libraries' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_include_directories' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gen_version_h' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_targets' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_link_flags' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_interfaces' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_libraries' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_include_directories' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_definitions' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_core' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_package' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_lint_cmake' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_flake8' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_copyright' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_lint' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_index_python' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_index_cpp' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cpplint' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/darkmagician0901/ros2_humble/install/ament_cppcheck' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/test_msgs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/action_msgs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/unique_identifier_msgs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_lint_common' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_uncrustify' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/uncrustify_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_cyclonedds_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.386s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/tracetools' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/test_interface_files' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_spdlog' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/spdlog_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextddsmicro' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextdds' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_connextdds_common' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rti_connext_dds_cmake_module' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosgraph_msgs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_dds_common' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcl_interfaces' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/builtin_interfaces' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_default_runtime' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_default_generators' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_py' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_introspection_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.387s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_rs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_introspection_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_fastrtps_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_fastrtps_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_runtime_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcl_yaml_param_parser' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_runtime_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_generator_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_typesupport_interface' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_cmake' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_parser' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rosidl_adapter' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ros_environment' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rmw_implementation_cmake' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcpputils' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.396s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_noop' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.397s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcl_logging_interface' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.397s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/rcutils' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.397s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/launch_testing_ament_cmake' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.397s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/python_cmake_module' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/performance_test_fixture' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/osrf_testing_tools_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/mimick_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/libyaml_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/cyclonedds' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/iceoryx_posh' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/iceoryx_hoofs' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/iceoryx_binding_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_ros' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gmock' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/gmock_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gtest' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/gtest_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_google_benchmark' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.400s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/google_benchmark_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/fastrtps' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/foonathan_memory_vendor' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/fastrtps_cmake_module' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/fastcdr' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_xmllint' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_pep257' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_lint_auto' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_version' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_pytest' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_lint_cmake' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_flake8' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_cpplint' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_cppcheck' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_copyright' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_test' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_target_dependencies' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_python' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_dependencies' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_libraries' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_include_directories' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_gen_version_h' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_targets' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_link_flags' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_interfaces' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_libraries' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_include_directories' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_export_definitions' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_cmake_core' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.401s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/darkmagician0901/ros2_humble/install/ament_index_cpp' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.403s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 287 installed packages in /opt/ros/humble
+[0.404s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_args' from command line to 'None'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_target' from command line to 'None'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_clean_cache' from command line to 'False'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_clean_first' from command line to 'False'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'cmake_force_configure' from command line to 'False'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'ament_cmake_args' from command line to 'None'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'catkin_cmake_args' from command line to 'None'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'f1tenth_gym_ros' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.429s] DEBUG:colcon.colcon_core.verb:Building package 'f1tenth_gym_ros' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/darkmagician0901/sim_ws/build/f1tenth_gym_ros', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros', 'merge_install': False, 'path': '/home/darkmagician0901/sim_ws/src/f1tenth_gym_ros', 'symlink_install': False, 'test_result_base': None}
+[0.430s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.430s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.431s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/darkmagician0901/sim_ws/src/f1tenth_gym_ros' with build type 'ament_python'
+[0.431s] Level 1:colcon.colcon_core.shell:create_environment_hook('f1tenth_gym_ros', 'ament_prefix_path')
+[0.436s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.436s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/ament_prefix_path.ps1'
+[0.437s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/ament_prefix_path.dsv'
+[0.437s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/ament_prefix_path.sh'
+[0.438s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.438s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.615s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/darkmagician0901/sim_ws/src/f1tenth_gym_ros'
+[0.615s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.615s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.883s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: build_py, test, bdist_rpm, develop, upload_docs, dist_info, saveopts, build_clib, bdist_egg, check, symlink_data, install_headers, upload, register, egg_info, nosetests, alias, build_scripts, build, install, rotate, install_egg_info, install_scripts, clean, bdist, install_data, install_lib, setopt, easy_install, bdist_wheel, build_ext, sdist, bdist_dumb
+[0.887s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/darkmagician0901/sim_ws/src/f1tenth_gym_ros': PYTHONPATH=/home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/build install --record /home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/install.log --install-scripts $base/lib/f1tenth_gym_ros --single-version-externally-managed install_data
+[1.069s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/darkmagician0901/sim_ws/src/f1tenth_gym_ros' returned '0': PYTHONPATH=/home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/build install --record /home/darkmagician0901/sim_ws/build/f1tenth_gym_ros/install.log --install-scripts $base/lib/f1tenth_gym_ros --single-version-externally-managed install_data
+[1.074s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros' for CMake module files
+[1.075s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros' for CMake config files
+[1.078s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/lib'
+[1.078s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/bin'
+[1.078s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/lib/pkgconfig/f1tenth_gym_ros.pc'
+[1.079s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/lib/python3.10/site-packages'
+[1.079s] Level 1:colcon.colcon_core.shell:create_environment_hook('f1tenth_gym_ros', 'pythonpath')
+[1.079s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/pythonpath.ps1'
+[1.080s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/pythonpath.dsv'
+[1.080s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/hook/pythonpath.sh'
+[1.081s] Level 1:colcon.colcon_core.environment:checking '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/bin'
+[1.081s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(f1tenth_gym_ros)
+[1.081s] INFO:colcon.colcon_core.shell:Creating package script '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/package.ps1'
+[1.082s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/package.dsv'
+[1.083s] INFO:colcon.colcon_core.shell:Creating package script '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/package.sh'
+[1.083s] INFO:colcon.colcon_core.shell:Creating package script '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/package.bash'
+[1.084s] INFO:colcon.colcon_core.shell:Creating package script '/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/package.zsh'
+[1.085s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/darkmagician0901/sim_ws/install/f1tenth_gym_ros/share/colcon-core/packages/f1tenth_gym_ros)
+[1.085s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.085s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.085s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.085s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.096s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.097s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.097s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.113s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.113s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/darkmagician0901/sim_ws/install/local_setup.ps1'
+[1.114s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/darkmagician0901/sim_ws/install/_local_setup_util_ps1.py'
+[1.115s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/darkmagician0901/sim_ws/install/setup.ps1'
+[1.116s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/darkmagician0901/sim_ws/install/local_setup.sh'
+[1.117s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/darkmagician0901/sim_ws/install/_local_setup_util_sh.py'
+[1.117s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/darkmagician0901/sim_ws/install/setup.sh'
+[1.118s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/darkmagician0901/sim_ws/install/local_setup.bash'
+[1.119s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/darkmagician0901/sim_ws/install/setup.bash'
+[1.120s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/darkmagician0901/sim_ws/install/local_setup.zsh'
+[1.121s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/darkmagician0901/sim_ws/install/setup.zsh'

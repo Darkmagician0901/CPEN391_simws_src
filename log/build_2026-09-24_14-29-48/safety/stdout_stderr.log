@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/safety/safety.egg-info/PKG-INFO
+writing dependency_links to ../../build/safety/safety.egg-info/dependency_links.txt
+writing entry points to ../../build/safety/safety.egg-info/entry_points.txt
+writing requirements to ../../build/safety/safety.egg-info/requires.txt
+writing top-level names to ../../build/safety/safety.egg-info/top_level.txt
+reading manifest file '../../build/safety/safety.egg-info/SOURCES.txt'
+writing manifest file '../../build/safety/safety.egg-info/SOURCES.txt'
+running build
+running build_py
+copying safety/safety_node.py -> /home/darkmagician0901/sim_ws/build/safety/build/lib/safety
+running install
+running install_lib
+copying /home/darkmagician0901/sim_ws/build/safety/build/lib/safety/safety_node.py -> /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety
+byte-compiling /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety/safety_node.py to safety_node.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/safety/safety.egg-info to /home/darkmagician0901/sim_ws/install/safety/lib/python3.10/site-packages/safety-0.0.0-py3.10.egg-info
+running install_scripts
+Installing safety_node script to /home/darkmagician0901/sim_ws/install/safety/lib/safety
+writing list of installed files to '/home/darkmagician0901/sim_ws/build/safety/install.log'
