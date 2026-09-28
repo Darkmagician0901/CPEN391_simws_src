@@ -19,6 +19,7 @@ import math
 
 import numpy as np
 import rclpy
+from nav_msgs.msg import Odometry
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Float64
@@ -30,6 +31,7 @@ class DistFinder(Node):
 
     Subscription:
         scan_topic (sensor_msgs/LaserScan): LiDAR ranges.
+        odom_topic (nav_msgs/Odometry): forward speed, used to scale L.
 
     Publication:
         error_topic (std_msgs/Float64): steering error in meters
@@ -38,7 +40,9 @@ class DistFinder(Node):
     Params:
         wall_side (str): 'left' or 'right', the wall to follow.
         desired_distance (float, m): target distance to the wall.
-        lookahead_distance (float, m): L, how far ahead to project the distance.
+        lookahead_time (float, s): L = speed * lookahead_time, how far ahead
+            to project the distance.
+        min_lookahead, max_lookahead (float, m): bounds on L.
         theta (float, deg): angle between beam b (perpendicular to the car)
             and beam a (tilted toward the front). Must be in (0, 90).
         neighbor_count (int): beams on each side to average when a reading
@@ -52,20 +56,55 @@ class DistFinder(Node):
         # Alias topics for ease of use
         self.declare_parameter('scan_topic', '/scan')
         self.declare_parameter('error_topic', '/wall_error')
+        self.declare_parameter('odom_topic', '/ego_racecar/odom')
 
         # Defaults only; real values come from param.yaml
         self.declare_parameter('wall_side', 'left')
         self.declare_parameter('desired_distance', 1.0)
-        self.declare_parameter('lookahead_distance', 1.0)
         self.declare_parameter('theta', 50.0)
         self.declare_parameter('neighbor_count', 2)
+        self.declare_parameter('lookahead_time', 0.5)
+        self.declare_parameter('min_lookahead', 0.5)
+        self.declare_parameter('max_lookahead', 2.0)
 
         scan_topic = self.get_parameter('scan_topic').value
         error_topic = self.get_parameter('error_topic').value
+        odom_topic = self.get_parameter('odom_topic').value
 
         self.scan_subscription = self.create_subscription(
             LaserScan, scan_topic, self.scan_callback, 10)
+        self.odom_subscription = self.create_subscription(
+            Odometry, odom_topic, self.odom_callback, 10)
         self.error_publisher = self.create_publisher(Float64, error_topic, 10)
+
+        self.speed = 0.0
+
+    def odom_callback(self, msg):
+        """
+        Store the current forward speed of the car.
+
+        Args:
+            msg (nav_msgs.msg.Odometry): the odometry message.
+
+        Side effects:
+            Updates self.speed (m/s, forward is positive).
+        """
+        self.speed = msg.twist.twist.linear.x
+
+    def get_lookahead(self):
+        """
+        Compute the lookahead distance L from the current speed.
+
+        Returns:
+            float: speed * lookahead_time, clipped to
+                [min_lookahead, max_lookahead], in meters.
+        """
+        lookahead_time = float(self.get_parameter('lookahead_time').value)
+        min_lookahead = float(self.get_parameter('min_lookahead').value)
+        max_lookahead = float(self.get_parameter('max_lookahead').value)
+
+        lookahead = abs(self.speed) * lookahead_time
+        return min(max(lookahead, min_lookahead), max_lookahead)
 
     def get_range(self, msg, angle):
         """
@@ -125,7 +164,7 @@ class DistFinder(Node):
             float or None: error in meters, or None if the beams are invalid.
         """
         wall_side = self.get_parameter('wall_side').value
-        lookahead_distance = float(self.get_parameter('lookahead_distance').value)
+        lookahead_distance = self.get_lookahead()
         theta = math.radians(float(self.get_parameter('theta').value))
 
         if not 0.0 < theta < math.pi / 2:

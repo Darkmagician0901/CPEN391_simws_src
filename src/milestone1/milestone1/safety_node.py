@@ -2,13 +2,13 @@
 name and student number: Jeff Chang, 20230629
 Safety node for the car, applying AEB to avoid collision
 
-This node subscribes to LiDAR and the car odometry and use their data to compute
-time-to-collision (TTC). Idea here is to calculate the instantaneous ttc (aka iTTC) for 
-the chosen beams, particularly the ones covering the future trajectory of the car
-(i.e. we can abstractly think of the car and its movement to be on a super long
-rectangle, as long as nothing is in this rectangle, we can ignore it).
-Then we check min iTTC and then stop if it is below the threshold, the node 
-publishes a set-speed-to-zero command on the /drive topic.
+This node subscribes to LiDAR and the car odometry and uses their data to
+compute time-to-collision (TTC). The idea is to calculate the instantaneous
+TTC (iTTC) for the beams covering the future path of the car. We can think of
+the car and its movement as a long rectangle in front of it: as long as
+nothing is inside this rectangle, it can be ignored.
+If the smallest iTTC is below the threshold, the node publishes a
+zero-speed command on /drive.
 
 This node is also the only publisher on /drive: the driving node (pid) sends
 its commands to /drive_request, and they are only forwarded to /drive while
@@ -23,16 +23,14 @@ All three tuning values are ROS 2 parameters and can be changed while running:
 Always pass floats (0.6, 0.34), not integers, or the change is rejected.
 """
 
-# include needed imports
+import numpy as np
 import rclpy
 from rclpy.node import Node
-
-import numpy as np #optional 
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
-from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
+from ackermann_msgs.msg import AckermannDriveStamped
 
-# ITTC threshold
+# Default iTTC threshold (s)
 TTC_THRESHOLD = 0.5
 
 # Closing speeds below this value (m/s) are treated as "not approaching".
@@ -45,29 +43,28 @@ CAR_WIDTH = 0.34
 
 class SafetyNode(Node):
     """
-    The safety node implementations are below. 
+    Automatic emergency braking (AEB) based on iTTC, and gatekeeper of /drive.
 
     Subscription:
-        topic scan (sensor_msgs/LaserScan): LiDAR ranges, used to compute iTTC
-        topic ego_racecar/odom (nav_msgs/Odometry): forward speed 
-        (twist.twist.linear.x).
-        topic drive_request (ackermann_msgs/AckermannDriveStamped): commands
-        from the driving node, forwarded to drive when not braking.
+        scan_topic (sensor_msgs/LaserScan): LiDAR ranges, used to compute iTTC.
+        odom_topic (nav_msgs/Odometry): forward speed (twist.twist.linear.x).
+        drive_request_topic (ackermann_msgs/AckermannDriveStamped): commands
+            from the driving node, forwarded to drive_topic when not braking.
 
     Publication:
-        topic drive (ackermann_msgs/AckermannDriveStamped): zero-speed command
-        sent  when decided to brake, otherwise the forwarded drive requests.
+        drive_topic (ackermann_msgs/AckermannDriveStamped): zero-speed command
+            while braking, otherwise the forwarded drive requests.
 
     Params:
+        scan_topic, odom_topic, drive_request_topic, drive_topic (str):
+            topic names, read once at startup.
         ttc_threshold (float, s): brake when the smallest iTTC is below this.
         car_width (float, m): width of the car's path used to filter beams.
         min_closing_speed (float, m/s): beams closing slower than this are ignored.
     """
 
     def __init__(self):
-        """
-        Constructor for the node
-        """
+        """Declare parameters, set up topics and initialise the braking state."""
         super().__init__('safety_node')
 
         # Topic names (shared with the other nodes through the global param file)
@@ -77,26 +74,26 @@ class SafetyNode(Node):
         self.declare_parameter('drive_topic', '/drive')
 
         self.publisher_ = self.create_publisher(
-              AckermannDriveStamped,
-              self.get_parameter('drive_topic').value,
-              10)
+            AckermannDriveStamped,
+            self.get_parameter('drive_topic').value,
+            10)
         self.scan_subscription = self.create_subscription(
-              LaserScan,
-              self.get_parameter('scan_topic').value,
-              self.scan_callback,
-              10)
+            LaserScan,
+            self.get_parameter('scan_topic').value,
+            self.scan_callback,
+            10)
         self.odom_subscription = self.create_subscription(
-              Odometry,
-              self.get_parameter('odom_topic').value,
-              self.odom_callback,
-              10)
+            Odometry,
+            self.get_parameter('odom_topic').value,
+            self.odom_callback,
+            10)
         self.drive_request_subscription = self.create_subscription(
-              AckermannDriveStamped,
-              self.get_parameter('drive_request_topic').value,
-              self.drive_request_callback,
-              10)
+            AckermannDriveStamped,
+            self.get_parameter('drive_request_topic').value,
+            self.drive_request_callback,
+            10)
 
-        # Using params here for easy tuning
+        # Tuning params (re-read on every scan, so ros2 param set works live)
         self.declare_parameter('ttc_threshold', TTC_THRESHOLD)
         self.declare_parameter('car_width', CAR_WIDTH)
         self.declare_parameter('min_closing_speed', MIN_CLOSING_SPEED)
@@ -109,81 +106,74 @@ class SafetyNode(Node):
 
     def odom_callback(self, msg):
         """
-        Return the instant speed of the car (with forward as positive)
+        Store the current forward speed of the car.
 
         Args:
-            msg (nav_msgs.msg.Odometry): the odometry message
+            msg (nav_msgs.msg.Odometry): the odometry message.
 
         Side effects:
-            Updates self.speed.
+            Updates self.speed (m/s, forward is positive).
         """
         self.speed = msg.twist.twist.linear.x
 
     def compute_min_ttc(self, msg):
         """
-        Compute min iTTC from the beams inside the car's path
+        Compute the smallest iTTC among the beams inside the car's path.
 
         For beam i with range r_i and angle theta_i (0 = straight ahead):
             range rate   r_dot_i = -speed * cos(theta_i)
             iTTC_i       = r_i / max(-r_dot_i, 0)
 
         Args:
-            msg (sensor_msgs.msg.LaserScan): current LiDAR scan message
+            msg (sensor_msgs.msg.LaserScan): current LiDAR scan message.
 
         Returns:
-            (min_ttc, angle_of_min_ttc) --> tuple floats
-            
-                min_ttc (float) is the smallest iTTC from the car's path in seconds (inf if no beam is closing)
-                angle_of_min_ttc (float): angle of that beam in degrees
+            tuple[float, float]: (min_ttc, angle_of_min_ttc)
+                min_ttc: smallest iTTC in seconds (inf if no beam is closing).
+                angle_of_min_ttc: angle of that beam in degrees.
         """
-        
-        # Read the tuning params
         car_width = float(self.get_parameter('car_width').value)
         min_closing_speed = float(self.get_parameter('min_closing_speed').value)
 
-        # Read range and angle from lidar message
         ranges = np.asarray(msg.ranges, dtype=np.float64)
-
-        # Dynamic angle labelings
+        # Angle of every beam, computed from the message (no hardcoded count)
         angles = msg.angle_min + np.arange(ranges.size) * msg.angle_increment
 
-        # Filter invalid ranges
+        # Drop invalid readings (inf, nan, outside the sensor's range)
         valid_range = (
             np.isfinite(ranges)
             & (ranges >= msg.range_min)
             & (ranges <= msg.range_max)
         )
 
-        # Filter out beams whose hit point is outside the car's path
-        # (the beams whose y offset larger than half the car width)
+        # Drop beams whose hit point is outside the car's path
+        # (sideways offset larger than half the car width)
         in_path = np.abs(ranges * np.sin(angles)) <= car_width / 2.0
 
-        # Compute closing speed and iTTC for working beams, we set inf for all others
+        # How fast each beam's distance is shrinking (0 if it is not)
         range_rate = -self.speed * np.cos(angles)
         closing_speed = np.maximum(-range_rate, 0.0)
 
         effective_beams = valid_range & in_path & (closing_speed > min_closing_speed)
 
-        # caclulate iTTC for the used beams, inf for all others
+        # iTTC for the effective beams, inf for all others
         ttc = np.full(ranges.size, np.inf)
         for b in effective_beams.nonzero()[0]:
             ttc[b] = ranges[b] / closing_speed[b]
 
-        # Also retrieve the angle of the min ttc beam
         index = int(np.argmin(ttc))
-
         return float(ttc[index]), float(np.degrees(angles[index]))
 
     def scan_callback(self, msg):
         """
-        Decide whether brake or not based on min ttc
+        Decide whether to brake based on the smallest iTTC.
 
         Args:
-            msg (sensor_msgs.msg.LaserScan): current LiDAR scan message
+            msg (sensor_msgs.msg.LaserScan): current LiDAR scan message.
 
         Side effects:
-            Call brake when min iTTC < ttc_threshold.
-            Also writes a log message when braking.
+            Updates self.braking. When braking, publishes a zero-speed
+            command on drive_topic and logs a warning (at most every 0.5 s).
         """
         threshold = float(self.get_parameter('ttc_threshold').value)
         min_ttc, angle_of_min_ttc = self.compute_min_ttc(msg)
@@ -199,35 +189,34 @@ class SafetyNode(Node):
 
     def drive_request_callback(self, msg):
         """
-        Forward a drive command to drive unless the car is braking
+        Forward a drive command to drive_topic unless the car is braking.
 
         Args:
             msg (ackermann_msgs.msg.AckermannDriveStamped): requested command
-            from the driving node.
+                from the driving node.
 
         Side effects:
-            Publishes msg on 'drive' when self.braking is False.
+            Publishes msg on drive_topic when self.braking is False.
         """
         if not self.braking:
             self.publisher_.publish(msg)
 
     def brake(self):
         """
-        Brake the car
+        Command the car to stop.
 
         Side effects:
-            Publishes one AckermannDriveStamped message on 'drive'.
+            Publishes one zero-speed AckermannDriveStamped on drive_topic.
         """
-        # Use ackermann message here to set speed
         drive_msg = AckermannDriveStamped()
         drive_msg.header.stamp = self.get_clock().now().to_msg()
-        # Set speed to zero
         drive_msg.drive.speed = 0.0
         self.publisher_.publish(drive_msg)
-    
+
 
 def main(args=None):
-    """Start the safety node and spin until shutdown.
+    """
+    Start the safety node and spin until shutdown.
 
     Args:
         args (list[str] | None): command-line arguments passed to rclpy.init.
