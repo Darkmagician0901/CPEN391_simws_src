@@ -7,14 +7,19 @@
 # Individual values can also be changed at runtime, e.g.
 #     ros2 param set /pid kp 1.2
 #
-# NOTE: always write floats with a decimal point (1.0, not 1). A float
-# parameter set to an integer is rejected by rclpy.
+# NOTE: the type in this file must match the type of the default in
+# declare_parameter(). Floats need a decimal point (1.0, not 1). Integers
+# (neighbor_count) must NOT have one (2, not 2.0). rclpy rejects a mismatch.
+#
+# NOTE: a key that the node never declares is silently ignored. If you rename
+# or remove a parameter in the code, update this file too, or the node will
+# quietly run on its hard-coded default.
 
 # ---------------------------------------------------------------------------
 # Shared by all nodes: topic names
 # ---------------------------------------------------------------------------
 # Data flow:
-#   /scan --> dist_finder --> /wall_error --> pid --> /drive_request
+#   /scan + /ego_racecar/odom --> dist_finder --> /wall_error --> pid --> /drive_request
 #   /drive_request + /scan + /ego_racecar/odom --> safety_node --> /drive
 #
 # Only safety_node publishes on /drive, so a brake can never be overruled.
@@ -32,32 +37,42 @@
 dist_finder:
   ros__parameters:
     wall_side: left            # which wall to follow: 'left' or 'right'
-    desired_distance: 1.0      # m, target distance to the wall
-    lookahead_distance: 2.0    # m, L: project the distance this far ahead
-    theta: 50.0                # deg, angle between beam b (90 deg) and beam a
+    desired_distance: 1.2      # m, target distance to the wall
+    theta: 42.0               # deg, angle between beam b (90 deg) and beam a, in (0, 90)
+    neighbor_count: 2         # int, beams on each side averaged when a reading is invalid
+
+    # Dynamic lookahead: L = |v| * lookahead_time, clipped to [min, max].
+    # With the pid speed range below (3-8 m/s): L = 0.75 m at 3 m/s, 2.0 m at 8 m/s.
+    # Keep max_lookahead >= fast_speed * lookahead_time, otherwise L stops
+    # scaling at high speed, which is exactly where it matters most.
+    lookahead_time: 0.5      # s
+    min_lookahead: 1.7         # m, only active below 2 m/s (start-up)
+    max_lookahead: 1.7         # m
 
 # ---------------------------------------------------------------------------
 # pid: wall distance error -> steering and speed
 # ---------------------------------------------------------------------------
 pid:
   ros__parameters:
-    kp: 1.0
-    ki: 0.2
-    kd: 10.0
-    max_steering_angle: 1.0 # rad , steering output is clipped to this
-    integral_limit: 1.0        # anti-windup clamp on the integral term
+    kp: 0.8
+    ki: 0.1
+    kd: 0.45             # likely too high, see notes
+    max_steering_angle: 0.75 # rad (~24 deg), steering limit of the f1tenth_gym car
+    integral_limit: 0.5        # anti-windup clamp on the integral term
 
-        # Linear speed ramp based on |steering angle|
-    small_angle: 5.0          # deg, at or below this: fast_speed
-    large_angle: 40.0          # deg, at or above this: slow_speed
-    fast_speed: 5.0            # m/s
-    slow_speed: 2.5            # m/s, speed ramps linearly in between
+    # Linear speed ramp based on |steering angle|.
+    # large_angle must be below the physical limit (~24 deg), or the car
+    # reaches full lock while still going fast.
+    small_angle: 5.0           # deg, at or below this: fast_speed
+    large_angle: 30.0        # deg, at or above this: slow_speed
+    fast_speed: 10.0           # m/s
+    slow_speed: 6.5           # m/s, speed ramps linearly in between
 
 # ---------------------------------------------------------------------------
 # safety_node: TTC-based AEB, final gate on /drive
 # ---------------------------------------------------------------------------
 safety_node:
   ros__parameters:
-    ttc_threshold: 0.3         # s, brake when min iTTC is below this
+    ttc_threshold: 0.35         # s, brake when min iTTC is below this
     car_width: 0.34            # m, width of the path used to filter beams
     min_closing_speed: 1.0e-6  # m/s, beams closing slower than this are ignored
