@@ -1,8 +1,8 @@
 """
 Distance finder node for wall following.
 
-Subscribes to the LiDAR scan, measures the car's distance to the wall and
-publishes the error for the pid node.
+Subscribes to the LiDAR scan and odometry, measures the car's distance to
+the wall and publishes the error for the pid node.
 
 Error sign convention (side-independent):
     error > 0  ->  the car should steer LEFT  (positive steering angle)
@@ -12,7 +12,7 @@ Error sign convention (side-independent):
 So the pid node can simply do: steering_angle = Kp*e + Ki*∫e + Kd*de/dt,
 without knowing which wall is being followed.
 
-Params managed in param.yaml for ease of tuning
+All tuning values are ROS 2 parameters, set in config/params.yaml.
 """
 
 import math
@@ -53,12 +53,12 @@ class DistFinder(Node):
         """Declare parameters and set up the subscriber and publisher."""
         super().__init__('dist_finder')
 
-        # Alias topics for ease of use
+        # Topics
         self.declare_parameter('scan_topic', '/scan')
         self.declare_parameter('error_topic', '/wall_error')
         self.declare_parameter('odom_topic', '/ego_racecar/odom')
 
-        # Defaults only; real values come from param.yaml
+        # Defaults only; real values come from config/params.yaml
         self.declare_parameter('wall_side', 'left')
         self.declare_parameter('desired_distance', 1.0)
         self.declare_parameter('theta', 50.0)
@@ -123,7 +123,6 @@ class DistFinder(Node):
 
         ranges = np.asarray(msg.ranges, dtype=np.float64)
         # Index of the beam closest to the requested angle
-        # We use actual angle in radians divide by increment to get the estimate index and round
         index = int(round((angle - msg.angle_min) / msg.angle_increment))
         index = min(max(index, 0), len(ranges) - 1)
 
@@ -134,7 +133,6 @@ class DistFinder(Node):
 
         # Use neighbors if the exact beam is invalid
         neighbor_count = int(self.get_parameter('neighbor_count').value)
-        #
         low = max(0, index - neighbor_count)
         high = min(len(ranges), index + neighbor_count + 1)
         neighbor_ranges = [ranges[i] for i in range(low, high)
@@ -184,20 +182,18 @@ class DistFinder(Node):
         b = self.get_range(msg, side * math.pi / 2)
         a = self.get_range(msg, side * (math.pi / 2 - theta))
 
-        # Sanity check 
         if not (math.isfinite(a) and math.isfinite(b)):
             # Warn at most once per second to avoid spamming the log
             self.get_logger().warn('No valid wall reading, skipping this scan',
                                    throttle_duration_sec=1.0)
             return None
 
-        # Calculate the alpha and cur_dist
+        # Heading angle and current distance to the wall
         alpha = math.atan2(a * math.cos(theta) - b, a * math.sin(theta))
         current_distance = b * math.cos(alpha)
-        # Error position
+        # Distance to the wall after driving L ahead
         predicted_distance = current_distance + lookahead_distance * math.sin(alpha)
 
-        # Return the error 
         # Use the side coefficient to flip the sign for left vs right wall.
         # Right wall: too close -> steer left (positive).
         # Left wall: too close -> steer right (negative). Hence the side flip.

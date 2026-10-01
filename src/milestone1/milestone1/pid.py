@@ -1,9 +1,9 @@
 """
 PID controller node for wall following.
 
-Subscribes to the wall distance error from dist_finder, runs pid control
-to get steering angle output, picks a speed from the steering angle and publishes
-the drive request. The request goes to safety_node, which is the only node
+Subscribes to the wall distance error from dist_finder, runs PID control to
+get a steering angle, picks a speed from that angle and publishes the drive
+request. The request goes to safety_node, which is the only node
 allowed to publish on /drive (so a brake can never be overruled).
 
 Based on the WallFollow template from the CPEN 391 "Reactive Methods for
@@ -23,7 +23,6 @@ from std_msgs.msg import Float64
 from ackermann_msgs.msg import AckermannDriveStamped
 
 
-
 class PID(Node):
     """
     PID steering control for wall following.
@@ -39,9 +38,10 @@ class PID(Node):
         kp, ki, kd (float): PID gains.
         max_steering_angle (float, rad): steering output is clipped to this.
         integral_limit (float, m*s): anti-windup clamp on the error integral.
-        small_angle (float, deg): below this steering angle, drive atfast_speed.
-        large_angle (float, deg): above this steering angle, drive atslow_speed. 
-        Speed ramps linearly between the two thresholds.
+        small_angle (float, deg): at or below this steering angle, drive at
+            fast_speed.
+        large_angle (float, deg): at or above this steering angle, drive at
+            slow_speed. Speed ramps linearly between the two thresholds.
         fast_speed, slow_speed (float, m/s): speeds at the two ends of the ramp.
     """
 
@@ -53,14 +53,14 @@ class PID(Node):
         self.declare_parameter('error_topic', '/wall_error')
         self.declare_parameter('drive_request_topic', '/drive_request')
 
-        # pid
+        # PID gains
         self.declare_parameter('kp', 1.0)
         self.declare_parameter('ki', 0.0)
         self.declare_parameter('kd', 0.0)
         self.declare_parameter('max_steering_angle', 0.4189)
         self.declare_parameter('integral_limit', 1.0)
 
-        # speed 
+        # Speed ramp
         self.declare_parameter('small_angle', 10.0)
         self.declare_parameter('large_angle', 20.0)
         self.declare_parameter('fast_speed', 1.5)
@@ -74,7 +74,7 @@ class PID(Node):
         self.drive_publisher = self.create_publisher(
             AckermannDriveStamped, drive_request_topic, 10)
 
-        # time related info
+        # PID state
         self.integral = 0.0
         self.prev_error = 0.0
         self.prev_time = None
@@ -104,7 +104,7 @@ class PID(Node):
         max_steering_angle = float(self.get_parameter('max_steering_angle').value)
         integral_limit = float(self.get_parameter('integral_limit').value)
 
-        # for first message, skip I and D since no precise dt and no previous errors
+        # On the first message there is no dt or previous error, so skip I and D
         derivative = 0.0
         if dt > 0.0:
             # I: accumulate error over time, clamped so it cannot wind up
@@ -119,7 +119,7 @@ class PID(Node):
 
     def get_speed(self, steering_angle):
         """
-        Simple linear speed control based on pid output.
+        Pick a speed from the steering angle.
 
         Speed profile (angles in degrees, compared by magnitude):
             |angle| <= small_angle                -> fast_speed
@@ -154,8 +154,7 @@ class PID(Node):
 
     def error_callback(self, msg):
         """
-        Call on new error message, direct to pid control and publish drive
-        messages to the drive_request_topic
+        Run PID on a new error and publish the resulting drive request.
 
         Args:
             msg (std_msgs.msg.Float64): distance error from dist_finder.
@@ -163,17 +162,15 @@ class PID(Node):
         Side effects:
             Publishes one AckermannDriveStamped message on drive_request_topic.
         """
-        # Get how much time since last message
+        # Time since the previous error; stays 0.0 on the first message
         now = self.get_clock().now()
         dt = 0.0
-        # when first message, we dont have previous time so we dont calculate
-        # dt, but we still want to update the previous time for the next message
         if self.prev_time is not None:
             dt = (now - self.prev_time).nanoseconds * 1e-9
         self.prev_time = now
 
         steering_angle = self.pid_control(msg.data, dt)
- 
+
         drive_msg = AckermannDriveStamped()
         drive_msg.header.stamp = now.to_msg()
         drive_msg.drive.steering_angle = float(steering_angle)

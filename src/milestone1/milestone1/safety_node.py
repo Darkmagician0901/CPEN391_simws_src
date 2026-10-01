@@ -1,6 +1,6 @@
 """
 name and student number: Jeff Chang, 20230629
-Safety node for the car, applying AEB to avoid collision
+Safety node for the car, applying AEB to avoid collisions.
 
 This node subscribes to LiDAR and the car odometry and uses their data to
 compute time-to-collision (TTC). The idea is to calculate the instantaneous
